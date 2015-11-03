@@ -340,7 +340,7 @@ static id _sharedInstance;
     // Keep a separate array of location requests to complete to avoid modifying the locationRequests property while iterating over it
     NSMutableArray *locationRequestsToComplete = [NSMutableArray array];
     
-    for (INTULocationRequest *locationRequest in self.locationRequests) {
+    for (INTULocationRequest *locationRequest in self.locationRequests.copy) {
         if (locationRequest.hasTimedOut) {
             // Request has timed out, complete it
             [locationRequestsToComplete addObject:locationRequest];
